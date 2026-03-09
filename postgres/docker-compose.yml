@@ -7,4 +7,16 @@ services:
       POSTGRES_USER: composcd
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: testdb
+    networks:
+      - test_net
+    volumes:
+      - test_vol:/var/lib/postgresql/data
     restart: unless-stopped
+
+networks:
+  test_net:
+    external: true
+
+volumes:
+  test_vol:
+    external: true

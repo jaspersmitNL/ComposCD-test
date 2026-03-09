@@ -3,4 +3,16 @@ services:
     image: redis:7-alpine
     ports:
       - "6379:6379"
+    networks:
+      - test_net
+    volumes:
+      - test_vol:/data
     restart: unless-stopped
+
+networks:
+  test_net:
+    external: true
+
+volumes:
+  test_vol:
+    external: true
